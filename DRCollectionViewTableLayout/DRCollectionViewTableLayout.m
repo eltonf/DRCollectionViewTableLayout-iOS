@@ -382,7 +382,9 @@ const NSInteger DRTopLeftColumnHeaderIndex = -1;
         
         CGFloat x = 0;
         if (indexPath.item == DRTopLeftColumnHeaderIndex) {
-            x = 0;
+            CGFloat stickyX = CGRectGetMinX(self.collectionView.bounds) + self.collectionView.contentInset.left;
+            if (x < stickyX)
+                x = stickyX;
             width = [self.delegate collectionView:self.collectionView
                                       tableLayout:self
                        widthForRowHeaderInSection:indexPath.section];
@@ -457,7 +459,12 @@ const NSInteger DRTopLeftColumnHeaderIndex = -1;
         
         // set attributes frame and zIndex
         currentItemAttributes.frame = CGRectMake(x, y, width, height);
-        currentItemAttributes.zIndex = 101;
+        
+        if (indexPath.item == DRTopLeftColumnHeaderIndex) {
+            currentItemAttributes.zIndex = 102;
+        } else {
+            currentItemAttributes.zIndex = 101;
+        }
     }
     else if ([kind isEqualToString:DRCollectionViewTableLayoutSupplementaryViewRowHeader]) {
         
