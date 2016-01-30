@@ -40,6 +40,7 @@ static NSString * const CollectionViewHeaderIdentifier = @"Header";
     DRCollectionViewTableLayout *collectionViewLayout = [[DRCollectionViewTableLayout alloc] initWithDelegate:self.collectionManager];
     collectionViewLayout.horizontalSpacing = 5.f;
     collectionViewLayout.verticalSpacing = 5.f;
+    collectionViewLayout.hasTopLeftColumnHeaderView = YES;
     self.collectionView.collectionViewLayout = collectionViewLayout;
     self.collectionView.dataSource = self.collectionManager;
     self.collectionView.delegate = self.collectionManager;
