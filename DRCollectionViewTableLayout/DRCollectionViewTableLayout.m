@@ -382,9 +382,15 @@ const NSInteger DRTopLeftColumnHeaderIndex = -1;
         
         CGFloat x = 0;
         if (indexPath.item == DRTopLeftColumnHeaderIndex) {
-            CGFloat stickyX = CGRectGetMinX(self.collectionView.bounds) + self.collectionView.contentInset.left;
-            if (x < stickyX)
-                x = stickyX;
+            if (self.pinRowHeadersToLeftEdge) {
+                x = self.collectionView.contentOffset.x + self.collectionView.contentInset.left;
+            } else {
+                CGFloat stickyX = CGRectGetMinX(self.collectionView.bounds) + self.collectionView.contentInset.left;
+                if (x < stickyX) {
+                    x = stickyX;
+                }
+            }
+            
             width = [self.delegate collectionView:self.collectionView
                                       tableLayout:self
                        widthForRowHeaderInSection:indexPath.section];
@@ -473,9 +479,14 @@ const NSInteger DRTopLeftColumnHeaderIndex = -1;
         
         // stick header to left edge
         if ([self stickyRowHeadersInSection:indexPath.section]) {
-            CGFloat stickyX = CGRectGetMinX(self.collectionView.bounds) + self.collectionView.contentInset.left;
-            if (x < stickyX)
-                x = stickyX;
+            if (self.pinRowHeadersToLeftEdge) {
+                x = self.collectionView.contentOffset.x + self.collectionView.contentInset.left;
+            } else {
+                CGFloat stickyX = CGRectGetMinX(self.collectionView.bounds) + self.collectionView.contentInset.left;
+                if (x < stickyX) {
+                    x = stickyX;
+                }
+            }
         }
         
         // compute y position

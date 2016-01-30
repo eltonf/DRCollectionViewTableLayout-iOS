@@ -136,6 +136,11 @@ static NSString * const DRCollectionViewTableLayoutSupplementaryViewRowHeader = 
 @property (nonatomic, assign) BOOL hasTopLeftColumnHeaderView;
 
 /**
+ *  Pin row headers to left edge of collection view frame
+ */
+@property (nonatomic, assign) BOOL pinRowHeadersToLeftEdge;
+
+/**
  *  Initialize with delegate
  *
  *  @param delegate Collection View Table Layout Delegate

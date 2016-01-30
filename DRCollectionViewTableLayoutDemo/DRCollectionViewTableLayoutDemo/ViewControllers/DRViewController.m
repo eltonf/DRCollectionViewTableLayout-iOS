@@ -40,10 +40,13 @@ static NSString * const CollectionViewHeaderIdentifier = @"Header";
     DRCollectionViewTableLayout *collectionViewLayout = [[DRCollectionViewTableLayout alloc] initWithDelegate:self.collectionManager];
     collectionViewLayout.horizontalSpacing = 5.f;
     collectionViewLayout.verticalSpacing = 5.f;
+    collectionViewLayout.verticalSectionSpacing = 0.f;
     collectionViewLayout.hasTopLeftColumnHeaderView = YES;
+//    collectionViewLayout.pinRowHeadersToLeftEdge = YES;
     self.collectionView.collectionViewLayout = collectionViewLayout;
     self.collectionView.dataSource = self.collectionManager;
     self.collectionView.delegate = self.collectionManager;
+//    self.collectionView.bounces = NO;
 }
 
 - (DRCollectionViewTableLayoutManager *)collectionManager
@@ -68,10 +71,10 @@ static NSString * const CollectionViewHeaderIdentifier = @"Header";
                          numberOfRowsInSection:(NSUInteger)section
 {
     if (section == 0) {
-        return 10;
+        return 4;
     }
     else if (section == 1) {
-        return 5;
+        return 15;
     }
     
     return 0;
